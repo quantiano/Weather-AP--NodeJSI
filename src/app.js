@@ -6,6 +6,7 @@ const forecast = require('./utils/forecast')
 //const forecast = require('./utils_extra/forecast')
 //const geocode = require('./utils_extra/geocode')
 
+
 //console.log(__dirname)
 //console.log(path.join(__dirname, '../templates/partials'))
 
@@ -65,24 +66,29 @@ app.get('/help/*', (req, res) => {
 app.get('/weather', (req, res) => {
     
     if(!req.query.address){
-        return res.send({ // return == stop execute
-            error: 'no location input!'
+        return res.render('index',{ // return == stop execute
+            error_lastest: 'no location input!',
+            title: 'Weather',
+            text: 'Weather API via geocode & mapbox',
+            name: 'ntppmm @ main'
         })
     }
 
     geocode(req.query.address, (error, {latitude, longtitude, location_geo} = {}) => { // geocode(input, callback function to get a value back, we expect error, latitude, longtitude, location) callback function = (error, data)
         if(error){
-            return res.send({error: 'error query!'})
+            return res.send({error_lastest: 'error query!'})
         }
 
-        forecast(latitude, longtitude, (error, {forecastData, location_fore} = {}) => { // forecast(input1, input2, callback function to get a value back) callback function = (error, data)
+        forecast(latitude, longtitude, (error, {forecastData, location_fore, feelslike_fore, humidity_fore} = {}) => { // forecast(input1, input2, callback function to get a value back) callback function = (error, data)
             if(error){
-                return res.send({error: 'error forecast query!'})
+                return res.send({error_lastest: 'error forecast query!'})
             }
 
             res.send({
                 location_lastest: location_fore,
-                forecast: forecastData,
+                forecast_lastest: forecastData,
+                feelslike_lastest: feelslike_fore,
+                humidity_lastest: humidity_fore,
                 address: req.query.address
             })
 

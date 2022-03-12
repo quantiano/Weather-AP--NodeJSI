@@ -20,7 +20,9 @@ const forecast = (lat, long, callback) => {
                 console.log(response.body.location.name)
                 callback(undefined, {
                     location_fore: response.body.location.name,
-                    forecastData: response.body.current.weather_descriptions
+                    forecastData: response.body.current.weather_descriptions,
+                    humidity_fore: response.body.current.humidity,
+                    feelslike_fore: response.body.current.feelslike,
                 })
             }
             }

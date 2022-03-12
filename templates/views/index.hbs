@@ -9,6 +9,7 @@
 <body>
     {{>header}} <!-- เรียกใช้ header.hbs ที่เรา registerPartials ไปในหน้า app.js -->
     <p>{{text}}</p>
+    <p>{{error_lastest}}</p>
         <form>
             <input placeholder="insert the location">
             <button>Search</button>
@@ -17,6 +18,8 @@
         <p id="message1"></p>
         <p id="message2"></p>
         <p id="message3"></p>
+        <p id="message4"></p>
+        <p id="message5"></p>
     {{>footer}} <!-- เรียกใช้ footer.hbs ที่เรา registerPartials ไปในหน้า app.js -->
 
     <script src="/js/app.js"></script>
