@@ -17,6 +17,9 @@ weatherForm.addEventListener('submit', (e) => { // listen on submit event and ca
     messageThree.textContent = ''
 
     if(!location){
+        messageOne.textContent = 'input is invalid!'
+        messageTwo.textContent = ''
+        messageThree.textContent = ''
         return console.log('input is invalid')
     }
 
