@@ -20,7 +20,8 @@ weatherForm.addEventListener('submit', (e) => { // listen on submit event and ca
         return console.log('input is invalid')
     }
 
-    fetch('http://localhost:3000/weather?address='+location).then((response) => { // อันนี้เรา fetch ไปที่ app.js เรา เพื่อรอ res กลับมา
+    //fetch('http://localhost:3000/weather?address='+location).then((response) => { // อันนี้เรา fetch ไปที่ app.js เรา เพื่อรอ res กลับมา ** localhost **
+    fetch('/weather?address='+location).then((response) => { // อันนี้เรา fetch ไปที่ app.js เรา เพื่อรอ res กลับมา ** heroku **
     response.json().then((data) => { // เอา response ที่เป็น json มาแกะเอา data
         
         // เรา res.send มา 1 ค่าถ้า error และ 3 ค่าถ้าไม่ error ได้แก้ location, forecast, address
