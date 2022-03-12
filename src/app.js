@@ -70,19 +70,19 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(req.query.address, (error, {latitude, longtitude, location} = {}) => { // geocode(input, callback function to get a value back, we expect error, latitude, longtitude, location) callback function = (error, data)
+    geocode(req.query.address, (error, {latitude, longtitude, location_geo} = {}) => { // geocode(input, callback function to get a value back, we expect error, latitude, longtitude, location) callback function = (error, data)
         if(error){
             return res.send({error: 'error query!'})
         }
 
-        forecast(latitude, longtitude, (error, forecastData) => { // forecast(input1, input2, callback function to get a value back) callback function = (error, data)
+        forecast(latitude, longtitude, (error, {forecastData, location_fore} = {}) => { // forecast(input1, input2, callback function to get a value back) callback function = (error, data)
             if(error){
                 return res.send({error: 'error forecast query!'})
             }
 
             res.send({
+                location_lastest: location_fore,
                 forecast: forecastData,
-                location: location,
                 address: req.query.address
             })
 

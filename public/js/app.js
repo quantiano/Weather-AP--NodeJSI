@@ -31,7 +31,8 @@ weatherForm.addEventListener('submit', (e) => { // listen on submit event and ca
             messageTwo.textContent = ''
             messageThree.textContent = ''
         }else{
-            messageOne.textContent = data.location
+            console.log('everything is fine!')
+            messageOne.textContent = data.location_lastest
             messageTwo.textContent = data.forecast
             messageThree.textContent = data.address
         }
