@@ -89,7 +89,8 @@ app.get('/weather', (req, res) => {
                 forecast_lastest: forecastData,
                 feelslike_lastest: feelslike_fore,
                 humidity_lastest: humidity_fore,
-                address: req.query.address
+                address: req.query.address,
+                combine_all: 'This is for '+location_fore+'. Forecast is '+forecastData+'. It feels like '+ feelslike_fore+'. Humidity is about '+humidity_fore+' .Address you are searching is '+ req.query.address
             })
 
         })
